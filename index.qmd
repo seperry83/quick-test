@@ -1,0 +1,26 @@
+---
+title: "Map Data"
+format:
+  html:
+    page-layout: full
+    self-contained: false
+---
+
+```{ojs}
+// ---------------------------------------------------------------------------
+// DATA — replace this block with a fetch() from your data.json once it's set up
+// ---------------------------------------------------------------------------
+data = [
+  { name: "Location A", latitude: 38.58,  longitude: -121.49, status: "Active",   updated: "2024-04-01" },
+  { name: "Location B", latitude: 37.77,  longitude: -122.41, status: "Inactive", updated: "2024-03-28" },
+  { name: "Location C", latitude: 34.05,  longitude: -118.24, status: "Active",   updated: "2024-04-01" },
+  { name: "Location D", latitude: 36.74,  longitude: -119.77, status: "Pending",  updated: "2024-03-30" }
+]
+
+// ---------------------------------------------------------------------------
+// When your data.json is ready, swap the block above for:
+// data = await fetch("data.json").then(r => r.json())
+// ---------------------------------------------------------------------------
+
+Inputs.table(data)
+```
