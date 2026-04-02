@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Map Data</title>
+<title>Golden Mussel Sightings</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-efbb37e9afcc02144ebbc7afd12a776f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-67270d1595a62d14f123c043d4fb2f18.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script type="module" src="index_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="index_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
@@ -86,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Map Data</h1>
+<h1 class="title">Golden Mussel Sightings</h1>
 </div>
 
 
@@ -104,9 +104,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="10" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 9;"><span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">"data.json"</span>)<span class="op">.</span><span class="fu">then</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="fu">json</span>())</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-startfrom="11" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="cf">await</span> <span class="fu">fetch</span>(<span class="st">"data.json"</span>)<span class="op">.</span><span class="fu">then</span>(r <span class="kw">=&gt;</span> r<span class="op">.</span><span class="fu">json</span>())</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">// Convert Excel serial date to readable date</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">excelDate</span>(serial) {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> date <span class="op">=</span> <span class="kw">new</span> <span class="bu">Date</span>((serial <span class="op">-</span> <span class="dv">25569</span>) <span class="op">*</span> <span class="dv">86400</span> <span class="op">*</span> <span class="dv">1000</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> date<span class="op">.</span><span class="fu">toLocaleDateString</span>(<span class="st">"en-US"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">// Clean up the data</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> raw<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> ({</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Station</span><span class="op">:</span> d[<span class="st">"Station"</span>]<span class="op">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Date</span><span class="op">:</span> <span class="fu">excelDate</span>(d[<span class="st">"Date"</span>])<span class="op">,</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Approximate Quantity"</span><span class="op">:</span> d[<span class="st">"Approximate Quantity"</span>]<span class="op">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Description</span><span class="op">:</span> d[<span class="st">"Description (e_x002e_g_x002e_, found on sonde body)"</span>]<span class="op">,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">"First Sighting?"</span><span class="op">:</span> d[<span class="st">"Is this the first golden mussel sighting at this station?"</span>]<span class="op">,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Email</span><span class="op">:</span> d[<span class="st">"Email"</span>]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data<span class="op">,</span> {</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">header</span><span class="op">:</span> {</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Station</span><span class="op">:</span> <span class="st">"Station"</span><span class="op">,</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Date</span><span class="op">:</span> <span class="st">"Date"</span><span class="op">,</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Approximate Quantity"</span><span class="op">:</span> <span class="st">"Quantity"</span><span class="op">,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Description</span><span class="op">:</span> <span class="st">"Description"</span><span class="op">,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">"First Sighting?"</span><span class="op">:</span> <span class="st">"First Sighting?"</span><span class="op">,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Email</span><span class="op">:</span> <span class="st">"Submitted By"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> {</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Station</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Date</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Approximate Quantity"</span><span class="op">:</span> <span class="dv">80</span><span class="op">,</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Description</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="st">"First Sighting?"</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Email</span><span class="op">:</span> <span class="dv">200</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -116,7 +149,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-2" data-nodetype="expression">
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="expression">
 
 </div>
 </div>
@@ -126,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </main>
 <!-- /main column -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImRhdGEgPSBhd2FpdCBmZXRjaChcImRhdGEuanNvblwiKS50aGVuKHIgPT4gci5qc29uKCkpXHJcblxyXG5JbnB1dHMudGFibGUoZGF0YSlcclxuIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InJhdyA9IGF3YWl0IGZldGNoKFwiZGF0YS5qc29uXCIpLnRoZW4ociA9PiByLmpzb24oKSlcclxuXHJcbi8vIENvbnZlcnQgRXhjZWwgc2VyaWFsIGRhdGUgdG8gcmVhZGFibGUgZGF0ZVxyXG5mdW5jdGlvbiBleGNlbERhdGUoc2VyaWFsKSB7XHJcbiAgY29uc3QgZGF0ZSA9IG5ldyBEYXRlKChzZXJpYWwgLSAyNTU2OSkgKiA4NjQwMCAqIDEwMDApXHJcbiAgcmV0dXJuIGRhdGUudG9Mb2NhbGVEYXRlU3RyaW5nKFwiZW4tVVNcIilcclxufVxyXG5cclxuLy8gQ2xlYW4gdXAgdGhlIGRhdGFcclxuZGF0YSA9IHJhdy5tYXAoZCA9PiAoe1xyXG4gIFN0YXRpb246IGRbXCJTdGF0aW9uXCJdLFxyXG4gIERhdGU6IGV4Y2VsRGF0ZShkW1wiRGF0ZVwiXSksXHJcbiAgXCJBcHByb3hpbWF0ZSBRdWFudGl0eVwiOiBkW1wiQXBwcm94aW1hdGUgUXVhbnRpdHlcIl0sXHJcbiAgRGVzY3JpcHRpb246IGRbXCJEZXNjcmlwdGlvbiAoZV94MDAyZV9nX3gwMDJlXywgZm91bmQgb24gc29uZGUgYm9keSlcIl0sXHJcbiAgXCJGaXJzdCBTaWdodGluZz9cIjogZFtcIklzIHRoaXMgdGhlIGZpcnN0IGdvbGRlbiBtdXNzZWwgc2lnaHRpbmcgYXQgdGhpcyBzdGF0aW9uP1wiXSxcclxuICBFbWFpbDogZFtcIkVtYWlsXCJdXHJcbn0pKVxyXG5cclxuSW5wdXRzLnRhYmxlKGRhdGEsIHtcclxuICBoZWFkZXI6IHtcclxuICAgIFN0YXRpb246IFwiU3RhdGlvblwiLFxyXG4gICAgRGF0ZTogXCJEYXRlXCIsXHJcbiAgICBcIkFwcHJveGltYXRlIFF1YW50aXR5XCI6IFwiUXVhbnRpdHlcIixcclxuICAgIERlc2NyaXB0aW9uOiBcIkRlc2NyaXB0aW9uXCIsXHJcbiAgICBcIkZpcnN0IFNpZ2h0aW5nP1wiOiBcIkZpcnN0IFNpZ2h0aW5nP1wiLFxyXG4gICAgRW1haWw6IFwiU3VibWl0dGVkIEJ5XCJcclxuICB9LFxyXG4gIHdpZHRoOiB7XHJcbiAgICBTdGF0aW9uOiA4MCxcclxuICAgIERhdGU6IDEwMCxcclxuICAgIFwiQXBwcm94aW1hdGUgUXVhbnRpdHlcIjogODAsXHJcbiAgICBEZXNjcmlwdGlvbjogMzAwLFxyXG4gICAgXCJGaXJzdCBTaWdodGluZz9cIjogMTAwLFxyXG4gICAgRW1haWw6IDIwMFxyXG4gIH1cclxufSlcclxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
