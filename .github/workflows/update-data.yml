@@ -12,10 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+          
       - name: Save data to JSON
+        env:
+          DATA: ${{ toJson(github.event.client_payload.data) }}
         run: |
-          echo '${{ github.event.client_payload.data }}' > docs/data.json
+          echo "$DATA" > docs/data.json
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
