@@ -1,13 +1,47 @@
 ---
-title: "Map Data"
+title: "Golden Mussel Sightings"
 format:
   html:
     page-layout: full
     self-contained: false
+    theme: cosmo
 ---
 
 ```{ojs}
-data = await fetch("data.json").then(r => r.json())
+raw = await fetch("data.json").then(r => r.json())
 
-Inputs.table(data)
+// Convert Excel serial date to readable date
+function excelDate(serial) {
+  const date = new Date((serial - 25569) * 86400 * 1000)
+  return date.toLocaleDateString("en-US")
+}
+
+// Clean up the data
+data = raw.map(d => ({
+  Station: d["Station"],
+  Date: excelDate(d["Date"]),
+  "Approximate Quantity": d["Approximate Quantity"],
+  Description: d["Description (e_x002e_g_x002e_, found on sonde body)"],
+  "First Sighting?": d["Is this the first golden mussel sighting at this station?"],
+  Email: d["Email"]
+}))
+
+Inputs.table(data, {
+  header: {
+    Station: "Station",
+    Date: "Date",
+    "Approximate Quantity": "Quantity",
+    Description: "Description",
+    "First Sighting?": "First Sighting?",
+    Email: "Submitted By"
+  },
+  width: {
+    Station: 80,
+    Date: 100,
+    "Approximate Quantity": 80,
+    Description: 300,
+    "First Sighting?": 100,
+    Email: 200
+  }
+})
 ```
