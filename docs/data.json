@@ -7,7 +7,7 @@
     "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
     "Email": "Morgan.Battey@water.ca.gov",
     "Is this the first golden mussel sighting at this station?": "Yes",
-    "ItemInternalId": "fe2da660-3f7e-449b-8c9c-6bcfd854d07d",
+    "ItemInternalId": "e5fe5483-e7b6-423c-bf12-efb1189b995f",
     "Station": "MAL"
   },
   {
@@ -18,7 +18,7 @@
     "Description (e_x002e_g_x002e_, found on sonde body)": "Found on the sonde body",
     "Email": "Morgan.Battey@water.ca.gov",
     "Is this the first golden mussel sighting at this station?": "Yes",
-    "ItemInternalId": "8a0d7239-387b-4459-9123-484b49ed322e",
+    "ItemInternalId": "f8d1c307-aa01-4553-b184-b2bfb691694b",
     "Station": "PPT"
   },
   {
@@ -28,8 +28,8 @@
     "Date": "46007",
     "Description (e_x002e_g_x002e_, found on sonde body)": "None",
     "Email": "Jay.Aldrich@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "35babb77-9e90-4920-83ea-6c4932fe395d",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "81a0dec9-2267-47d4-bfce-3818731ac666",
     "Station": "RRI"
   },
   {
@@ -40,7 +40,7 @@
     "Description (e_x002e_g_x002e_, found on sonde body)": "On surface float",
     "Email": "Jay.Aldrich@water.ca.gov",
     "Is this the first golden mussel sighting at this station?": "No",
-    "ItemInternalId": "27069a27-7ba0-4764-b532-7ce0fd2f3ffa",
+    "ItemInternalId": "38afcf64-0551-4997-b162-fe7b6eefb73f",
     "Station": "RRI"
   },
   {
@@ -51,7 +51,7 @@
     "Description (e_x002e_g_x002e_, found on sonde body)": "Float, well over 250",
     "Email": "Jay.Aldrich@water.ca.gov",
     "Is this the first golden mussel sighting at this station?": "No",
-    "ItemInternalId": "b62a7139-3ad6-4a71-8b56-20a08926d361",
+    "ItemInternalId": "58286173-f6c9-4946-be54-75b98fb45247",
     "Station": "RRI"
   },
   {
@@ -61,8 +61,8 @@
     "Date": "45858",
     "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
     "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "d97acd2b-7a77-430c-8185-23c134372430",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "b4fbce27-00b5-4607-ad93-03cf912e4381",
     "Station": "MAL"
   },
   {
@@ -72,30 +72,41 @@
     "Date": "45889",
     "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
     "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "ab26a1b8-92dc-47c4-81de-18a6016fe775",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "5632ddae-94a8-4760-a6cd-ca192e70bfe7",
     "Station": "MAL"
   },
   {
     "@odata.etag": "",
     "After submitting this form, report the new sighting to the CDFW website": "",
     "Approximate Quantity": "1-50",
-    "Date": "45920",
+    "Date": "45889",
     "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
     "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "96cdaff5-383e-4c53-b666-6869ea4ebd8b",
-    "Station": "MAL"
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "0f2b8710-865d-4bbb-ab5a-796032f0f350",
+    "Station": "RRI"
+  },
+  {
+    "@odata.etag": "",
+    "After submitting this form, report the new sighting to the CDFW website": "",
+    "Approximate Quantity": "100+",
+    "Date": "45889",
+    "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
+    "Email": "testing.testing@water.ca.gov",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "5ceed6ce-2d00-4f73-9e4a-2b6197d1246c",
+    "Station": "PPT"
   },
   {
     "@odata.etag": "",
     "After submitting this form, report the new sighting to the CDFW website": "",
     "Approximate Quantity": "1-50",
-    "Date": "45950",
-    "Description (e_x002e_g_x002e_, found on sonde body)": "Found on bottom of sonde guard",
+    "Date": "45981",
+    "Description (e_x002e_g_x002e_, found on sonde body)": "SO many tests",
     "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "0e2b536d-8a76-4212-89ed-a45fce8d44cc",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "78ff1bd4-73ed-46c7-9cc3-d232d6fe80aa",
     "Station": "MAL"
   },
   {
@@ -105,19 +116,8 @@
     "Date": "45981",
     "Description (e_x002e_g_x002e_, found on sonde body)": "SO many tests",
     "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "62a32c40-54aa-49ad-b145-4a09430fca96",
-    "Station": "MAL"
-  },
-  {
-    "@odata.etag": "",
-    "After submitting this form, report the new sighting to the CDFW website": "",
-    "Approximate Quantity": "1-50",
-    "Date": "45981",
-    "Description (e_x002e_g_x002e_, found on sonde body)": "SO many tests",
-    "Email": "testing.testing@water.ca.gov",
-    "Is this the first golden mussel sighting at this station?": "",
-    "ItemInternalId": "e13069d5-0757-4e6f-93af-b8ef57051ce9",
+    "Is this the first golden mussel sighting at this station?": "No",
+    "ItemInternalId": "a0f6fad1-ee24-47ba-846e-b31be78f4656",
     "Station": "MAL"
   }
 ]
