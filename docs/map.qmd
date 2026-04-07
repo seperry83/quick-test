@@ -9,6 +9,10 @@ format:
     theme: cosmo
 ---
 
+This map shows where Golden Mussels (*Limnoperna fortunei*) have been detected at EMP’s continuous water quality monitoring stations over the past year. These sightings are based on visual observations with genetic confirmation typically conducted when mussels are first identified at a new station.
+
+Stations shown in grey indicate no recorded detections to date, while blue stations indicate locations where Golden Mussels were detected previously but have not been observed in the selected month. It should be noted that absence of detections does not necessarily indicate absence of Golden Mussels, as detection depends on monitoring frequency and environmental conditions.
+
 ```{r}
 #| include: false
 library(plotly)
@@ -47,11 +51,11 @@ p <- plot_ly(frames_data,
         frame = ~factor(month_year, levels = month_years),
         showlegend = FALSE) %>%
   add_trace(lat = NA, lon = NA, type = 'scattermapbox', mode = 'markers',
-            marker = list(color = '#FDBBA1', size = 10), name = '1-50 Mussels', showlegend = TRUE) %>%
+            marker = list(color = '#fdd49e', size = 10), name = '1-50 Mussels', showlegend = TRUE) %>%
   add_trace(lat = NA, lon = NA, type = 'scattermapbox', mode = 'markers',
-            marker = list(color = '#FC8D59', size = 10), name = '50-100 Mussels', showlegend = TRUE) %>%
+            marker = list(color = '#fc8d59', size = 10), name = '50-100 Mussels', showlegend = TRUE) %>%
   add_trace(lat = NA, lon = NA, type = 'scattermapbox', mode = 'markers',
-            marker = list(color = '#D7301F', size = 10), name = '100+ Mussels', showlegend = TRUE) %>%
+            marker = list(color = '#b30000', size = 10), name = '100+ Mussels', showlegend = TRUE) %>%
   add_trace(lat = NA, lon = NA, type = 'scattermapbox', mode = 'markers',
             marker = list(color = '#4C78A8', size = 10), name = 'Previous Sightings', showlegend = TRUE) %>%
   add_trace(lat = NA, lon = NA, type = 'scattermapbox', mode = 'markers',
@@ -70,7 +74,7 @@ p <- plot_ly(frames_data,
     domain = list(x = c(0, 0.82), y = c(0, 0.85)))) %>%
   layout(
     width = 720, height = 680,
-    margin = list(t = 10, r = 0, b = 110, l = 40),
+    margin = list(t = 0, r = 0, b = 110, l = 40),
     legend = list(x = 0.83, y = 0.425, font = list(size = 10), title = list(text = '<b>Mussel Sightings</b>', font = list(size = 12))),
     shapes = list(list(
       type = 'rect', xref = 'paper', yref = 'paper',
@@ -84,7 +88,7 @@ p_built <- plotly_build(p)
 date_annotation <- function(month) {
   list(list(
     text = paste0('<b>Current Date: ', month, '</b>'),
-    x = 0.41, y = 0.97,
+    x = 0.41, y = 0.92,
     xref = 'paper', yref = 'paper',
     showarrow = FALSE,
     font = list(size = 16)
@@ -123,9 +127,7 @@ p_built$x$layout$sliders[[1]]$len <- 0.82
 p_built$x$layout$sliders[[1]]$x <- 0
 ```
 
-An example string of information.
-
 ```{r}
 #| echo: false
-htmltools::div(style = "display: flex; justify-content: center; height: 680px; width: 720px; margin: 0 auto;", p_built)
+htmltools::div(style = 'display: flex; justify-content: center; height: 680px; width: 720px; margin: 0 auto;', p_built)
 ```
